@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: todo
+
+  datasource:
+    driver-class-name: org.postgresql.Driver # 사용하는 DB에 맞게 변경 (예: org.postgresql.Driver)
+    url: jdbc:postgresql://localhost:5432/todolist
+    username: jaeho
+    password: '1234'
+
+  jpa: # JPA 관련 설정
+    hibernate: # hibernate(JPA의 구현체) -> @Entity 분석, SQL 생성, Java 객체 DB 저장, 조회 결과 Java 객체 반환 등
+      ddl-auto: update # update: 없으면 새로 만들어줌(있으면 사용), create: 실행할 때 마다 새로 만들어줌
+    show-sql: true # 콘솔에 로그를 띄워줌
