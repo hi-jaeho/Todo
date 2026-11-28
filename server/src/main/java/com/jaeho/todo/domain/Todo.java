@@ -23,6 +23,7 @@ public class Todo {
     @Column(length = 2000)
     private String detail; // todo-detail
 
+    @Column
     private boolean completed = false; // checker
 
     @Column(length = 2000)
@@ -34,5 +35,25 @@ public class Todo {
         this.targetDate = targetDate;
         this.detail = detail;
         this.completed = false;
+    }
+
+    public void update(String title, LocalDate targetDate, String detail) {
+        this.title = title;
+        this.targetDate = targetDate;
+        this.detail = detail;
+    }
+
+    public void updateComplete() {
+        this.completed = !(this.completed);
+    }
+
+    public void updateFeedback(String feedback) {
+        if(!completed) {
+            throw new IllegalStateException(
+                    "완료된 할 일에만 피드백을 작성할 수 있습니다."
+            );
+        }
+
+        this.feedback = feedback;
     }
 }
